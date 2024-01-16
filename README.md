@@ -2,18 +2,26 @@
 
 Some boilerplate for LLM hacking during Artsy Hackathon 13, January 2024.
 
-Based on a vercel/ai starter template…
+Based on a [Vercel AI SDK](https://sdk.vercel.ai/docs) starter template…
 
 https://github.com/vercel/ai/tree/main/examples/next-openai-pages
 
 …with the addition of [Palette](https://github.com/artsy/palette) and some minimal styling.
+
+Feel free to fork and use as a local sandbox.
+
+Deployment would be another story, but this could be a good momentum builder in the meantime.
+
+Currently just contains a vanilla chat completion using OpenAI. But this is basically a blank slate that could grow to include function calling, retrieval augmented generation, etc.
+
+![chat](./chat.gif)
 
 ## Usage
 
 ```sh
 git clone https://github.com/anandaroop/artsy-chat
 cd artsy-chat
-yarn install
+yarn install # requires Node >=18.17.0
 ```
 
 ```sh
