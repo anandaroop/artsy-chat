@@ -16,6 +16,9 @@ export default function Chat() {
 
   return (
     <Flex flexDirection="column" width={1} maxWidth={500} m="auto" pb={100}>
+      <Text color="black30" py={2}>
+        Ask me about artists and artworks on Artsy.
+      </Text>
       {messages.map((m) => (
         <Text key={m.id} py={1} style={{ whiteSpace: "pre-wrap" }}>
           <Text as="span" fontWeight={900}>
@@ -36,7 +39,7 @@ export default function Chat() {
           maxWidth={500}
           bottom={0}
           mb={4}
-          style={{boxShadow: "0px 0px 10px 10px #ffffff"}}
+          style={{ boxShadow: "0px 0px 10px 10px #ffffff" }}
           value={input}
           placeholder="Chat with Artsy"
           onChange={handleInputChange}
