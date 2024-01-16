@@ -1,17 +1,30 @@
-'use client';
+"use client";
 
-import { useChat } from 'ai/react';
+import { useChat } from "ai/react";
+import { useEffect, useRef } from "react";
 
 export default function Chat() {
   const { messages, input, handleInputChange, handleSubmit } = useChat();
+  const scrollMeRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (scrollMeRef.current) {
+      scrollMeRef.current.scrollIntoView();
+    }
+  }, [messages]);
+
   return (
     <div className="flex flex-col w-full max-w-md py-24 mx-auto stretch">
-      {messages.map(m => (
+      {messages.map((m) => (
         <div key={m.id} className="whitespace-pre-wrap">
-          {m.role === 'user' ? 'User: ' : 'AI: '}
+          {m.role === "user" ? "User: " : "AI: "}
           {m.content}
         </div>
       ))}
+
+      <div ref={scrollMeRef}>
+        {/* invisible element that will be scrolled into view as `messages` gets updated */}
+      </div>
 
       <form onSubmit={handleSubmit}>
         <input
