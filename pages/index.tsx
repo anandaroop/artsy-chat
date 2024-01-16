@@ -1,5 +1,6 @@
 "use client";
 
+import { Box, Flex, Input, Text } from "@artsy/palette";
 import { useChat } from "ai/react";
 import { useEffect, useRef } from "react";
 
@@ -14,12 +15,15 @@ export default function Chat() {
   }, [messages]);
 
   return (
-    <div className="flex flex-col w-full max-w-md py-24 mx-auto stretch">
+    <Flex flexDirection="column" width={1} maxWidth={500} m="auto" pb={100}>
       {messages.map((m) => (
-        <div key={m.id} className="whitespace-pre-wrap">
-          {m.role === "user" ? "User: " : "AI: "}
+        <Text key={m.id} py={1} style={{ whiteSpace: "pre-wrap" }}>
+          <Text as="span" fontWeight={900}>
+            {m.role === "user" ? "You" : "Artsy"}:{` `}
+          </Text>
+
           {m.content}
-        </div>
+        </Text>
       ))}
 
       <div ref={scrollMeRef}>
@@ -27,13 +31,17 @@ export default function Chat() {
       </div>
 
       <form onSubmit={handleSubmit}>
-        <input
-          className="fixed bottom-0 w-full max-w-md p-2 mb-8 border border-gray-300 rounded shadow-xl"
+        <Input
+          position={"fixed"}
+          maxWidth={500}
+          bottom={0}
+          mb={4}
+          style={{boxShadow: "0px 0px 10px 10px #ffffff"}}
           value={input}
-          placeholder="Say something..."
+          placeholder="Chat with Artsy"
           onChange={handleInputChange}
         />
       </form>
-    </div>
+    </Flex>
   );
 }
